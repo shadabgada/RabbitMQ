@@ -8,12 +8,10 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import static com.javatechie.rabbitmqexample.common.RabbitMQConstants.*;
+
 @Configuration
 public class MessagingConfig {
-
-    public static final String QUEUE = "javatechie_queue";
-    public static final String EXCHANGE = "javatechie_exchange";
-    public static final String ROUTING_KEY = "javatechie_routingKey";
 
     @Bean
     public Queue queue() {

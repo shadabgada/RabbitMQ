@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
+import static com.javatechie.rabbitmqexample.common.RabbitMQConstants.EXCHANGE;
+import static com.javatechie.rabbitmqexample.common.RabbitMQConstants.ROUTING_KEY;
+
 @RestController
 @RequestMapping("/order")
 public class OrderPublisher {
@@ -22,7 +25,7 @@ public class OrderPublisher {
         order.setOrderId(UUID.randomUUID().toString());
         OrderStatus orderStatus = new OrderStatus(order, "PROCESS", "order placed successfully in "+restaurantName);
 
-        rabbitTemplate.convertAndSend(MessagingConfig.EXCHANGE, MessagingConfig.ROUTING_KEY, orderStatus);
+        rabbitTemplate.convertAndSend(EXCHANGE, ROUTING_KEY, orderStatus);
 
         return "Success!! ";
     }
